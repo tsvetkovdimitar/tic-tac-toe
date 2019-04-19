@@ -30,6 +30,7 @@ function startGame() {
 
         cells[i].innerText = '';
         cells[i].style.removeProperty('background-color');
+        cells[i].addEventListener('click', turnClick, false)
 
     }
 
