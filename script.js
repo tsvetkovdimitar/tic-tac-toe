@@ -35,3 +35,10 @@ function startGame() {
     }
 
 }
+
+function turnClick(square){
+
+    turn(square.target.id, humanPlayer);
+
+}
+
