@@ -54,12 +54,12 @@ function turn(squareId, player){
 function checkWin(board, player){
 
     let plays = board.reduce((a, e, i) =>
-        (e === player)) ? a.concat(i) : a, [];
+        (e === player) ? a.concat(i) : a, []);
     let gameWon = null;
 
     for(let [index, win] of winningCombos.entries()){
 
-        if(win.every(elem => plays.indexOf(elem > -1))){
+        if(win.every(elem => plays.indexOf(elem) > -1)){
 
             gameWon = {index: index, player: player};
             break;
@@ -72,3 +72,19 @@ function checkWin(board, player){
     
 }
 
+function gameOver(gameWon){
+
+    for(let index of winningCombos[gameWon.index]){
+
+        document.getElementById(index)
+            .style.backgroundColor = gameWon.player = humanPlayer ? "blue" : "red";
+
+    }
+
+    for(var i = 0; i < cells.length; i++){
+
+        cells[i].removeEventListener('click', turnClick, false);
+
+    }
+
+}
